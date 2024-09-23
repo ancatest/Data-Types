@@ -1,0 +1,17 @@
+{
+    "accountDetails":{
+        "username_default":"an@yahoo.com",
+        "password_default":"Test1234"
+
+    },
+
+
+
+    "FieldDetails":{
+        "name":"test",
+        "email":"antest@gmail.com",
+        "password":"Test1234"
+
+    }
+
+}
