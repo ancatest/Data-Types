@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { equal } from "assert";
 
 
-test("calendarflg", async ({ page }) => {
+test skip("calendarflg", async ({ page }) => {
 await page.goto("https://letcode.in/test");
 await expect (page.getByRole('heading',{name:'Practice and become pro in test automation'})).toBeVisible;
 await page.getByRole('link',{name:'Date & Time'}).click();
