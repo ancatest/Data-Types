@@ -19,6 +19,7 @@ get passwordInputField() {
 }
   get signupButton() {
     return this.page.getByRole('button', { name: 'SIGN UP' });
+    
   }
 
 }

@@ -1,0 +1,23 @@
+name: run Playright test
+on:
+  push:
+    branches: [main]
+
+  pull_request: 
+    branches: [main]
+
+jobs:
+  setup-and-run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: action/setup-node2v3
+        with:
+          node-version: 18
+      - name: install dependencies
+        run: npm ci
+      -name: install playright
+        run: npx playright install --with-deps
+      -name: Run Playright tests
+       id: e2e_tests
+       run: npx playright test --grep @first --project=chromium    
