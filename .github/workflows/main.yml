@@ -16,8 +16,8 @@ jobs:
           node-version: 18
       - name: install dependencies
         run: npm ci
-      -name: install playright
+      - name: install playright
         run: npx playright install --with-deps
-      -name: Run Playright tests
-       id: e2e_tests
-       run: npx playright test --grep @first --project=chromium    
+      - name: Run Playright tests
+        id: e2e_tests
+        run: npx playright test --grep @first --project=chromium    
