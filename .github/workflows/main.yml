@@ -20,4 +20,4 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         id: e2e_tests
-        run: npx playwright test --grep @first --project=chromium    
+        run: npx playwright test --grep first --project=chromium    
