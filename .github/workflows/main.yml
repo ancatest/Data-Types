@@ -1,4 +1,4 @@
-name: run Playright test
+name: run Playwright test
 on:
   push:
     branches: [main]
@@ -16,8 +16,8 @@ jobs:
           node-version: 18
       - name: install dependencies
         run: npm ci
-      - name: install playright
-        run: npx playright install --with-deps
-      - name: Run Playright tests
+      - name: install playwright
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
         id: e2e_tests
-        run: npx playright test --grep @first --project=chromium    
+        run: npx playwright test --grep @first --project=chromium    
