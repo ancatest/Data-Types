@@ -4,7 +4,7 @@ test.beforeEach(async ({ app }) => {
   await app.base.navigateTo('https://letcode.in/');
 });
 
-test("Registration", async ({ page,app }) => {
+test("Registration",{ tag: ["@smoke"],}, async ({ page,app }) => {
     await page.getByRole('link', { name: 'Sign up' }).click();
     await app.registration.completeForm();
  
