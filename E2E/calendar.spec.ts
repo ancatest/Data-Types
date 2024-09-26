@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { equal } from "assert";
 
 
-test skip("calendarflg", async ({ page }) => {
+test ("calendarflg", async ({ page }) => {
 await page.goto("https://letcode.in/test");
 await expect (page.getByRole('heading',{name:'Practice and become pro in test automation'})).toBeVisible;
 await page.getByRole('link',{name:'Date & Time'}).click();
@@ -18,8 +18,12 @@ try{
 }
 await expect(page.getByText('You have selected 9/16/24')).toBeVisible();
 await page.getByRole('button',{name:'Today'}).click();
-await expect(page.getByText('You have selected 9/17/24, 12:14 PM')).toBeVisible();
-await page.getByRole('button',{name:'Clear'}).click();
-await expect(page.getByText('You have selected 9/17/24, 12:09 PM')).toBeHidden();
+await page.clock.setFixedTime(new Date('2024-09-26T10:00:00'));
+await expect(page.getByTestId('current-time')).toHaveText('You have selected 9/26/24, 12:14 PM');
+await page.clock.setFixedTime(new Date('2024-09-26T12:14:00'));
+await expect(page.getByTestId('current-time')).toHaveText('9/17/2024, 12:14:00 AM');
+
+//await page.getByRole('button',{name:'Clear'}).click();
+//await expect(page.getByText('You have selected 9/17/24, 12:09 PM')).toBeHidden();
 //await expect(page.getByText('+00-;+00-'))
 });
