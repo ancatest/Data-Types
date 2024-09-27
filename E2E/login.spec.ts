@@ -5,7 +5,7 @@ test.beforeEach(async ({ app }) => {
   await app.base.navigateTo('https://letcode.in/');
 });
 
-test("Login Page-ValidCredentials", , { tag: ["@smoke"],}, async ({ page,app }) => {
+test("Login Page-ValidCredentials", { tag: ["@smoke"],}, async ({ page,app }) => {
     await page.getByRole('link', { name: 'Log in' }).click();
     await app.login.completeForm();
  
