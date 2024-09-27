@@ -2,7 +2,8 @@
 import { expect } from "@playwright/test";
 import test from "../E2E/test";
 test.beforeEach(async ({ app }) => {
-  await app.base.navigateTo('https://letcode.in/');
+  await app.base.navigateTo('https://letcode.in/'); 
+  await app.base.page.waitForLoadState('domcontentloaded');
 });
 
 test("Login Page-ValidCredentials", { tag: ["@smoke"],}, async ({ page,app }) => {
