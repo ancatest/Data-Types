@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-
-test("sortflogin", async ({ page }) => {
+test("sortflogin", { tag: ["@smoke"],},  async ({ page }) => {
 await page.goto("https://letcode.in/test");
 await expect(page.getByRole('heading',{name:'Practice and become pro in test automation'})).toBeVisible();
 await page.getByRole('link',{name:'AUI - 3'}).click();
