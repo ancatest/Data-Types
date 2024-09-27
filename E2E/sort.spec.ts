@@ -37,6 +37,7 @@ await item1.hover();
 
 await page.mouse.down();
 const box = (await Done.boundingBox())!;
+
 await page.mouse.move(box.x + box.width / 2 , box.y + box.height / 2, {steps: 10});
 await page.mouse.up();
 
