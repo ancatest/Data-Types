@@ -8,7 +8,9 @@
     "safari": "npx playwright test --project=webkit",
     "firefox": "npx playwright test --project=firefox",
     "specific": "npx playwright test example.spec.ts:3 --project=chromium",
-    "report": "npx playwwright show report"
+    "report": "npx playwwright show report",
+    "format:check": "npx prettier --check .",
+    "format:write": "npx prettier --write ."
   },
   "type": "module",
   "author": "anca",
