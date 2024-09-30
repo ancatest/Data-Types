@@ -1,5 +1,5 @@
 //STRINGS
-const prompt=require("prompt-sync")();
+const prompt = require("prompt-sync")();
 //EX1
 //const text =prompt("Insereaza sirul de caractere cu care v-om lucra: ");
 //let fifthcharacterofstring= text[4];
@@ -26,7 +26,6 @@ const prompt=require("prompt-sync")();
 //let text1 = bucata.toLocaleUpperCase();
 //console.log(text1);
 
-
 //INTEGERS
 
 //EX1
@@ -42,14 +41,14 @@ const prompt=require("prompt-sync")();
 //let greater;
 
 //if (x > y && x > z) {
-  //greater = x;
-//} 
+//greater = x;
+//}
 //else if (y > x && y > z) {
-  //greater = y;
+//greater = y;
 
-//} 
+//}
 //else {
-  //greater = z;
+//greater = z;
 //}
 
 //console.log(greater);
@@ -102,33 +101,31 @@ const prompt=require("prompt-sync")();
 
 //let sirul =prompt("Introdu caracterele sirului: ");
 //for(let i=0;i<sirul.length;i++){
- //if(sirul.indexOf(sirul[i])!==sirul.lastIndexOf(sirul[i])) 
-   //{continue;}
-//else 
+//if(sirul.indexOf(sirul[i])!==sirul.lastIndexOf(sirul[i]))
+//{continue;}
+//else
 
-  //console.log(sirul[i]);
+//console.log(sirul[i]);
 //}
 
 //EX4
 
 //function extractnr(){
 
-
 //let sirul =prompt("Introdu caracterele sirului: ");
 //let matches = sirul.match(/\d+/g);
 //if (matches){
-  //console.log(matches[0]+','+matches[1]);
-  //}
+//console.log(matches[0]+','+matches[1]);
+//}
 //}
 //extractnr();
 
 //EX6
 
- let sir =prompt("Introdu caracterele sirului: ");
-  for (let i = 0; i < sir.length; i++){
-  if (Number.isInteger(parseInt(sir[i])))
-   {
-    console.log(parseInt(sir[i])+33);
-break;
+let sir = prompt("Introdu caracterele sirului: ");
+for (let i = 0; i < sir.length; i++) {
+  if (Number.isInteger(parseInt(sir[i]))) {
+    console.log(parseInt(sir[i]) + 33);
+    break;
   }
 }

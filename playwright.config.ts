@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -11,29 +11,29 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './E2E',
-  timeout:10*10000,
-  expect:{
-    timeout:3000
+  testDir: "./E2E",
+  timeout: 10 * 10000,
+  expect: {
+    timeout: 3000,
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 :0,
+  retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 2 : undefined,
- //workers:2,
+  //workers:2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html'],['blob']],
+  reporter: [["html"], ["blob"]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
     screenshot: "only-on-failure",
     launchOptions: {
       args: ["--start-maximized"],
@@ -42,26 +42,26 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] ,
-       // viewport: null,
-       // deviceScaleFactor: undefined,
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
+        // viewport: null,
+        // deviceScaleFactor: undefined,
         //launchOptions: {
-         // args: ['--disable-web-security', '--start-maximized'],
+        // args: ['--disable-web-security', '--start-maximized'],
         //},
       },
     },
 
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
     },
 
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      name: "webkit",
+      use: { ...devices["Desktop Safari"] },
     },
 
     /* Test against mobile viewports. */
