@@ -1,17 +1,17 @@
-let selectedColors = ['red','blue'];
-selectedColors[2]='1';
+let selectedColors = ["red", "blue"];
+selectedColors[2] = "1";
 console.log(selectedColors.length);
 
-const cars =[];
-cars[0]="Saab";
-cars[1]="Volvo";
-cars[2]="BMW";
+const cars = [];
+cars[0] = "Saab";
+cars[1] = "Volvo";
+cars[2] = "BMW";
 console.log(cars);
 
-const cars1= new Array("Ford","Peugeot","Fiat");
+const cars1 = new Array("Ford", "Peugeot", "Fiat");
 console.log(cars1);
 
-const cars2 = ["Saab","Volvo","BMW"];
+const cars2 = ["Saab", "Volvo", "BMW"];
 let car = cars2[0];
 console.log(car);
 
@@ -30,7 +30,7 @@ let fruit = fruits2[fruits2.length - 1];
 console.log(fruit);
 
 // loop through array; li =list of elements si ul= unordered list element
-const fruits3= ["Banana", "Orange", "Apple", "Mango"];
+const fruits3 = ["Banana", "Orange", "Apple", "Mango"];
 let fLen = fruits3.length;
 let text = "<ul>";
 for (let i = 0; i < fLen; i++) {
@@ -41,13 +41,13 @@ console.log(text);
 
 // adaugare de elemente la array
 
-const fruits4=["Banana","Orange","Apple"];
+const fruits4 = ["Banana", "Orange", "Apple"];
 fruits4.push("Lemon");
 console.log(fruits4);
 
 //sau
-const fruits5=["Banana","Orange","Apple"];
-fruits5[fruits5.length]="Lemon";
+const fruits5 = ["Banana", "Orange", "Apple"];
+fruits5[fruits5.length] = "Lemon";
 console.log(fruits5);
 
 //associatives arrays
@@ -66,10 +66,10 @@ const points2 = new Array(40, 100, 1);
 console.log(points2);
 
 //// Create an array with 40 undefined elements:
-let points3 = new Array(40);  
+let points3 = new Array(40);
 console.log(points3);
 // Array is array iti arata tipul de array in js
-const fruits6=["Banana","Orange","Apple"];
+const fruits6 = ["Banana", "Orange", "Apple"];
 console.log(Array.isArray(fruits6));
 
 //sau folosind instanceof

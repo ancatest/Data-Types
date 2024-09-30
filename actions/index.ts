@@ -5,12 +5,12 @@ import RegisterActions from "./register.action";
 
 export default class App {
   base: BaseAction;
- login: LoginActions;
- registration: RegisterActions;
+  login: LoginActions;
+  registration: RegisterActions;
 
-  constructor(page:Page,context:BrowserContext){
-    this.base=new BaseAction(page,context);
+  constructor(page: Page, context: BrowserContext) {
+    this.base = new BaseAction(page, context);
     this.login = new LoginActions(page, context);
-    this.registration = new RegisterActions(page,context);
+    this.registration = new RegisterActions(page, context);
   }
 }
