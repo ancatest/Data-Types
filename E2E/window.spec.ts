@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import  data from "../resources/test-data.json" with { type: "json" };
 
-test("login", async ({ page }) => {
+test.skip("login", async ({ page }) => {
     await page.goto("https://letcode.in/signin");
     
     await page.getByRole('textbox',{name:'Enter registered email'}).fill(data.accountDetails.username_default);

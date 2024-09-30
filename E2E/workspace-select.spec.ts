@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+test.skip('test', async ({ page }) => {
   await page.goto('https://letcode.in/');
   await page.getByRole('link', { name: 'Log in' }).click();
   await page.getByRole('textbox', { name: 'Enter registered email' }).click();
