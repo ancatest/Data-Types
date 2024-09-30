@@ -46,11 +46,11 @@ export default defineConfig({
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
-        //viewport: null,
-         //deviceScaleFactor: undefined,
+        // viewport: null,
+        // deviceScaleFactor: undefined,
         //launchOptions: {
-         //args: ['--disable-web-security', '--start-maximized'],
-        },
+        // args: ['--disable-web-security', '--start-maximized'],
+        //},
       },
     },
 
