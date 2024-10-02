@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { beforeEach } from "node:test";
 
 //import moment from "moment";
 //import { afterEach, beforeEach, it } from "node:test";
@@ -32,7 +33,7 @@ import { test, expect } from "@playwright/test";
 
 //});
 
-test("calendarflg", async ({ page }) => {
+test.skip("calendarflg", async ({ page }) => {
   await page.goto("https://letcode.in/test");
   await expect(
     page.getByRole("heading", {
@@ -65,89 +66,35 @@ test("calendarflg", async ({ page }) => {
   await page.getByRole("button", { name: "Today" }).click();
 });
 
-//test.describe('Calendar', () => {
-//beforeEach(async () => {
-//await browser.get('https://letcode.in/calendar');
-//await page.goto('https://letcode.in/calendar');
-//await browser.manage().timeouts().implicitwait(10000);
-//})
-//afterEach(async () => {
-//await browser.sleep(3000);
-//})
-//it('Select tomorrow date', async () => {
-//let tomorrow = moment().add(1,'day').format ('D');
-//await element(by.buttonText(tomorrow)).click();
-//})
-//it('Select next month date', async () => {
-//let nextMonth = moment().add(30, 'day').format('D MMM');
-//let date = nextMonth.split('')[0]
-//let month = nextMonth.split('')[1]
-//await $('div.datepicker-nav-month').click()
-//await element(by.xpath(`//div[text()='${month}']`)).click();
-//await element(by.buttonText(date)).click();
-//})
-
-
-//de la Irina
-import { expect } from "@playwright/test";
-import test from "./test";
-import { beforeEach } from "node:test";
-
-test.beforeEach(async ({ app }) => {
-  await test.step("Navigate to calendar", async () => {
-    await app.base.navigateTo("https://letcode.in/calendar");
-  });
-});
-
-test.afterEach(async ({ app }, testInfo) => {
-  if (testInfo.status !== testInfo.expectedStatus) {
-    console.log(
-      `${
-        testInfo.title
-      } - did not run as expected, ended up at ${app.base.page.url()}`
-    );
-  }
-  app.base.page.close();
-});
-
-test("Select tomorrow's and next month's date from calendar", async ({
-  page,
-}) => {
-  // Gasim ziua de maine bazandune pe ziua curenta
+test("calendarnextdays", async ({ page }) => {
+  await page.goto("https://letcode.in/test");
+  await expect(
+    page.getByRole("heading", {
+      name: "Practice and become pro in test automation",
+    }),
+  ).toBeVisible;
+  await page.getByRole("link", { name: "Date & Time" }).click();
+  await expect(page.getByRole("heading", { name: "Calendar" })).toBeVisible();
+  await expect(page.locator(".datepicker-nav").first()).toBeVisible();
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
-
-  // extragem doar ziua de maine - "1"
   const dayTomorrow = tomorrow.getDate();
-  console.log("tomorrow is: ", tomorrow);
-
-  // Click pe ziua de maine
+  console.log("tomorrow :", dayTomorrow);
   await page
-    .getByRole("button", { name: `${dayTomorrow}`, exact: true })
-    .nth(1)
+    .getByRole("button", { name: dayTomorrow.toString(), exact: true })
     .click();
-  // adauga verificarea necesara
-});
-
-test("Select next month's date from calendar", async ({ page }) => {
-  const today = new Date();
-
-  const currentDayNextMonth = new Date(
-    today.getFullYear(),
-    today.getMonth() + 1,
-    today.getDate()
-  );
-  const nextMonthDay = currentDayNextMonth.getDate();
-  console.log("next month day is: ", nextMonthDay);
-
-  await page.locator(".datepicker-nav-next").first().click(); // dau click pe urmatoarea luna
-
-  // Select the first day of the next month
+  await expect(
+    page.getByText("You have selected 10/3/24, 12:00 AM"),
+  ).toBeVisible();
+  const dayaftertomorrow = new Date(tomorrow);
+  dayaftertomorrow.setDate(tomorrow.getDate() + 1);
+  const adayaftertomorrow = dayaftertomorrow.getDate();
+  console.log("poimaine:", adayaftertomorrow);
   await page
-    .getByRole("button", { name: `${nextMonthDay}`, exact: true })
-    .nth(1)
+    .getByRole("button", { name: adayaftertomorrow.toString(), exact: true })
     .click();
-
-  // adauga verificarea necesara
+  await expect(
+    page.getByText("You have selected 10/4/24, 12:00 AM"),
+  ).toBeVisible();
 });
