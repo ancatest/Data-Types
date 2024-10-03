@@ -112,15 +112,15 @@ test("calendarnextmonth", async ({ page }) => {
   const currentDayNextMonth = new Date(
     today.getFullYear(),
     today.getMonth() + 1,
-    today.getDate()
+    today.getDate(),
   );
-  const nextMonthDay = currentDayNextMonth.getDate()+1;
+  const nextMonthDay = currentDayNextMonth.getDate() + 1;
   console.log("next month day is: ", nextMonthDay);
   await page.locator(".datepicker-nav-next").first().click();
   await page
-  .getByRole("button", { name: nextMonthDay.toString(), exact: true })
+    .getByRole("button", { name: nextMonthDay.toString(), exact: true })
     .click();
   //await expect(
-    //page.getByText("You have selected 11/12/24, 12:00 AM"),
+  //page.getByText("You have selected 11/12/24, 12:00 AM"),
   //).toBeVisible();
 });
