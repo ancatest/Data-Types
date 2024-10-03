@@ -1,52 +1,52 @@
 name: smoke test
 on:
   workflow_dispatch: {}
-  
+
 jobs:
   setup-and-run-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       - name: install dependencies
         run: npm ci
       - name: install playwright
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         id: e2e_tests
-        run: npx playwright test --grep @smoke --project=chromium    
+        run: npx playwright test --grep @smoke --project=chromium
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
         continue-on-error: true
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: all-blob-reports
           path: blob-report
           retention-days: 7
   show-reports:
-      if: always()
-      needs: [setup-and-run-tests]
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - uses: actions/setup-node@v3
-          with:
-            node-version: 18
-        - name: install dependencies
-          run: npm ci
-        - name: download-reports
-          uses: actions/download-artifact@v3
-          with:
-              name: all-blob-reports
-              path: all-blob-reports
-        - name: Merge the blobs into one single HTML Report
-          run: npx playwright merge-reports --reporter html ./all-blob-reports
-        - name: Upload full html report to artifacts for history
-          if: always()
-          uses: actions/upload-artifact@v3
-          with:
-            name: playwright-report
-            path: playwright-report
-            retention-days: 14
+    if: always()
+    needs: [setup-and-run-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: install dependencies
+        run: npm ci
+      - name: download-reports
+        uses: actions/download-artifact@v4
+        with:
+          name: all-blob-reports
+          path: all-blob-reports
+      - name: Merge the blobs into one single HTML Report
+        run: npx playwright merge-reports --reporter html ./all-blob-reports
+      - name: Upload full html report to artifacts for history
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 14
