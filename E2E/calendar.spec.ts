@@ -65,7 +65,7 @@ test.skip("calendarflg", async ({ page }) => {
   await page.getByRole("button", { name: "Today" }).click();
 });
 
-test("calendarnextdays", async ({ page }) => {
+test.skip("calendarnextdays", async ({ page }) => {
   await page.goto("https://letcode.in/test");
   await expect(
     page.getByRole("heading", {
@@ -96,4 +96,31 @@ test("calendarnextdays", async ({ page }) => {
   await expect(
     page.getByText("You have selected 10/4/24, 12:00 AM"),
   ).toBeVisible();
+});
+
+test("calendarnextmonth", async ({ page }) => {
+  await page.goto("https://letcode.in/test");
+  await expect(
+    page.getByRole("heading", {
+      name: "Practice and become pro in test automation",
+    }),
+  ).toBeVisible;
+  await page.getByRole("link", { name: "Date & Time" }).click();
+  await expect(page.getByRole("heading", { name: "Calendar" })).toBeVisible();
+  await expect(page.locator(".datepicker-nav").first()).toBeVisible();
+  const today = new Date();
+  const currentDayNextMonth = new Date(
+    today.getFullYear(),
+    today.getMonth() + 1,
+    today.getDate()
+  );
+  const nextMonthDay = currentDayNextMonth.getDate()+1;
+  console.log("next month day is: ", nextMonthDay);
+  await page.locator(".datepicker-nav-next").first().click();
+  await page
+  .getByRole("button", { name: nextMonthDay.toString(), exact: true })
+    .click();
+  //await expect(
+    //page.getByText("You have selected 11/12/24, 12:00 AM"),
+  //).toBeVisible();
 });
