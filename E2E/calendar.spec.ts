@@ -111,7 +111,7 @@ test("calendarnextmonth", async ({ page }) => {
   const today = new Date();
   const currentDayNextMonth = new Date(
     today.getFullYear(),
-    today.getMonth() + 1,
+    today.getMonth() + 2,
     today.getDate(),
   );
   const nextMonthDay = currentDayNextMonth.getDate() + 1;
