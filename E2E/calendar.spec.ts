@@ -1,4 +1,10 @@
-import { test, expect } from "@playwright/test";
+import { expect } from "@playwright/test";
+import test from "../E2E/test";
+
+test.beforeEach(async ({ page, app }) => {
+  await app.base.navigateTo("https://letcode.in/");
+  await app.base.page.waitForLoadState("domcontentloaded");
+});
 
 //import moment from "moment";
 //import { afterEach, beforeEach, it } from "node:test";
@@ -98,29 +104,29 @@ test.skip("calendarnextdays", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("calendarnextmonth", async ({ page }) => {
+test("calendarnextmonth", async ({ page, app }) => {
   await page.goto("https://letcode.in/test");
+  await app.calendar.wheaderAsExpected();
+  await app.calendar.clickoncalendarview();
+  await app.calendar.cheaderAsExpected();
+
+  await app.calendar.monthHeaderIsVisible();
+
+  const selecteddate = await app.calendar.clickOnnextmonthdate();
+
+  //const today = new Date();
+  //const currentDayNextMonth = new Date(
+  // today.getFullYear(),
+  // today.getMonth() + 2,
+  // today.getDate(),
+  //);
+  //const nextMonthDay = currentDayNextMonth.getDate() + 1;
+  // console.log("next month day is: ", nextMonthDay);
+  //await page.locator(".datepicker-nav-next").first().click();
+  //await page
+  //.getByRole("button", { name: nextMonthDay.toString(), exact: true })
+  //.click();
   await expect(
-    page.getByRole("heading", {
-      name: "Practice and become pro in test automation",
-    }),
-  ).toBeVisible;
-  await page.getByRole("link", { name: "Date & Time" }).click();
-  await expect(page.getByRole("heading", { name: "Calendar" })).toBeVisible();
-  await expect(page.locator(".datepicker-nav").first()).toBeVisible();
-  const today = new Date();
-  const currentDayNextMonth = new Date(
-    today.getFullYear(),
-    today.getMonth() + 2,
-    today.getDate(),
-  );
-  const nextMonthDay = currentDayNextMonth.getDate() + 1;
-  console.log("next month day is: ", nextMonthDay);
-  await page.locator(".datepicker-nav-next").first().click();
-  await page
-    .getByRole("button", { name: nextMonthDay.toString(), exact: true })
-    .click();
-  //await expect(
-  //page.getByText("You have selected 11/12/24, 12:00 AM"),
-  //).toBeVisible();
+    page.getByText(`You have selected ${selecteddate}/24, 12:00 AM`),
+  ).toBeVisible();
 });
