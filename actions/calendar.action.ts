@@ -31,19 +31,20 @@ export default class CalendarActions extends BaseAction {
       .click();
     return `${selectedmonth}/${nextMonthDay}`;
   }
-  async wheaderAsExpected(){
-    await expect(this.calendar.wpageHeader(strings.workspacePage.wheaderTitle)).toBeVisible();
+  async wheaderAsExpected() {
+    await expect(
+      this.calendar.wpageHeader(strings.workspacePage.wheaderTitle),
+    ).toBeVisible();
   }
-  async clickoncalendarview(){
+  async clickoncalendarview() {
     await this.calendar.calendarview.click();
   }
-  async cheaderAsExpected(){
-    await expect(this.calendar.cpageHeader(strings.calendarPage.cheaderTitle)).toBeVisible();
+  async cheaderAsExpected() {
+    await expect(
+      this.calendar.cpageHeader(strings.calendarPage.cheaderTitle),
+    ).toBeVisible();
   }
-  async monthHeaderIsVisible(){
+  async monthHeaderIsVisible() {
     await expect(this.calendar.monthHeader).toBeVisible();
-
   }
-
-
 }

@@ -1,8 +1,8 @@
 {
-    "workspacePage":{
-        "wheaderTitle":  "Practice and become pro in test automation"
-    },
-    "calendarPage":{
-        "cheaderTitle": "Calendar"
-    }
+  "workspacePage": {
+    "wheaderTitle": "Practice and become pro in test automation"
+  },
+  "calendarPage": {
+    "cheaderTitle": "Calendar"
+  }
 }

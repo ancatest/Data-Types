@@ -106,11 +106,11 @@ test.skip("calendarnextdays", async ({ page }) => {
 
 test("calendarnextmonth", async ({ page, app }) => {
   await page.goto("https://letcode.in/test");
- await app.calendar.wheaderAsExpected();
+  await app.calendar.wheaderAsExpected();
   await app.calendar.clickoncalendarview();
   await app.calendar.cheaderAsExpected();
- 
- await app.calendar.monthHeaderIsVisible();
+
+  await app.calendar.monthHeaderIsVisible();
 
   const selecteddate = await app.calendar.clickOnnextmonthdate();
 

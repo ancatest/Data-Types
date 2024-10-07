@@ -8,22 +8,21 @@ export default class CalendarPage extends BasePage {
     const dateToString = date.toString();
     return this.page.getByRole("button", { name: dateToString, exact: true });
   }
-  wpageHeader(headerTitle:string){
+  wpageHeader(headerTitle: string) {
     return this.page.getByRole("heading", {
       name: `${headerTitle}`,
-    })
+    });
   }
 
-  get calendarview(){
+  get calendarview() {
     return this.page.getByRole("link", { name: "Date & Time" });
-
   }
-  cpageHeader(headerTitle:string){
-    return this.page.getByRole("heading", { 
-      name:  `${headerTitle}` ,
-  })
-}
-get monthHeader(){
-  return this.page.locator(".datepicker-nav").first()
-}
+  cpageHeader(headerTitle: string) {
+    return this.page.getByRole("heading", {
+      name: `${headerTitle}`,
+    });
+  }
+  get monthHeader() {
+    return this.page.locator(".datepicker-nav").first();
+  }
 }
